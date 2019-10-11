@@ -1,0 +1,35 @@
+#//////////////////////////////////////////////////////////////////
+# M3TIOR's shell profile
+#..................................................................
+
+# set PATH so it includes user's private bin directories
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH";
+
+
+# add optionals global binaries to PATH for better tarball package management
+export PATH="$(for dir in /opt/*/bin; do printf "%s" "$dir:"; done;)$PATH";
+export PATH="$(for dir in /mnt/steam/*/bin; do printf "%s" "$dir:"; done;)$PATH";
+# Specific to NodeJS because it's flat node_modules system was breaking my links and killing my disk
+#PATH="$(for dir in /opt/node*/lib/node_modules/*/bin; do printf "%s" "$dir:"; done;)$PATH";
+alias raw-npm=`npm bin -g`/npm;
+alias npm="pnpm";
+
+
+# add QT style override so my GUI apps have a uniform feel
+#
+# Do not uncomment! It will break things!
+#export QT_STYLE_OVERRIDE=/home/m3tior/Git/qt-styles/dist/purplest-inc-qt5.qss;
+#
+# I wish this worked but unfortunately it does not atm...
+
+# for cleaning up after a failed cmake build or whatever.
+alias cmake-clean="while read line; do echo \"Removing: \$line\"; rm -rf \"\$line\"; done < <(find . -regextype 'posix-extended' -regex '.*CMake(Files|Cache\.txt)')";
+
+# change IPv4 to tunneled via 6to4 IPv6
+alias ipproto-4to6="sla=\"5\"; printf \"2002:%02x%02x:%02x%02x:%04x::1\n\" `echo $1 | tr "." " "` $sla";
+
+# for using chromium with tor in a safer way. NOTE: the tor service must be running for this to work!
+alias chromium-oxide="chromium-browser --temp-profile --force-dark-mode --proxy-server=socks5://localhost:9050";
+
+# bash completion scripts:
+#type node; if [ $? ]; then node --completion-bash; fi;

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Send the header so that i3bar knows we want to use JSON:
+echo '{"version":1, "click_events":true}'
+
+# Begin the endless array.
+echo '['
+
+# We send an empty first array of blocks to make the loop simpler:
+echo '[],'
+
+# Now send blocks with information forever:
+conky -c $HOME/.i3/conkyrc 2>/dev/null &
+pid=$!
+
+trap "kill $pid; exit 0" INT TERM EXIT
+
+while read line; do
+  nb=$(echo $line|awk -F, '{gsub(/^./,"", $0);gsub(/[\{\}\"\[]/, "", $0);print $1";"$2}')
+  # if button is needed - ${nb#*;}
+  # left button -button:1, right - button:3
+  case "${nb%%;*}" in
+    name:keyboard) xfce4-keyboard-settings || mate-keyboard-properties & ;;
+    name:disk) thunar --class="ThunarHome" || caja --class="ThunarHome" & ;;
+    name:cpu) x-terminal-emulator -T "TerminalHtop" -e htop & ;;
+    name:battery)
+      case "${nb#*;}" in
+        button:1) xfce4-power-manager -c ||  mate-power-preferences & ;;
+        button:3) xfce4-power-information || mate-power-statistics & ;;
+      esac;;
+    name:wlan) $HOME/bin/wifi_connect.sh &>/dev/null &  ;;
+    name:lan) ;;
+    name:date) yad --calendar --title='Calendar selection' &>/dev/null & ;;
+    name:time) ;;
+    name:mail) xdg-open "https://gmail.com" &>/dev/null & ;;
+    name:logout) $HOME/bin/logout.py &>/dev/null & ;;
+    name:display) xfce4-display-settings || mate-display-properties  & ;;
+    *) logger "conky-i3bar: ${nb%%;*}" ;;
+  esac
+done
+

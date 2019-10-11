@@ -1,0 +1,72 @@
+"*":
+  core:
+    autoHideMenuBar: true
+    disabledPackages: [
+      "pigments"
+      "jupyter-notebook"
+      "Hydrogen"
+    ]
+    projectHome: "/home/m3tior/Git"
+    telemetryConsent: "limited"
+    themes: [
+      "purplest-inc-dark-ui"
+      "purplest-inc-syntax"
+    ]
+  editor:
+    invisibles: {}
+    scrollPastEnd: true
+    showInvisibles: true
+    softWrap: true
+    tabLength: 4
+    tabType: "hard"
+  "exception-reporting":
+    userId: "313602c1-c2eb-42e3-b111-d48020e39b47"
+  "fast-eslint": {}
+  "linter-ui-default":
+    showPanel: true
+  pigments:
+    extendedSearchNames: [
+      "*.css"
+    ]
+    mergeColorDuplicates: true
+    sourceNames: [
+      "*.css"
+      "*.styl"
+      "*.stylus"
+      "*.less"
+      "*.sass"
+      "*.scss"
+    ]
+  "tree-view-background":
+    imagePaths: [
+      "file:///home/m3tior/Pictures/post-26550-0-49230700-1425437874.png"
+      "file:///home/m3tior/.atom/tree-bg.png"
+    ]
+  welcome:
+    showOnStartup: false
+".basic.html.text":
+  editor:
+    softWrap: false
+    tabLength: 2
+".c.source":
+  editor:
+    tabLength: 2
+".cpp.source":
+  editor:
+    tabLength: 2
+".html.php.text":
+  editor:
+    tabLength: 2
+".js.source":
+  editor:
+    tabLength: 2
+".json.source":
+  editor:
+    tabLength: 2
+".text.xml":
+  editor:
+    softWrap: false
+    tabLength: 2
+".text.xml.xsl":
+  editor:
+    tabLength: 2
