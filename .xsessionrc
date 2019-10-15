@@ -1,0 +1,7 @@
+####### X Session Bootstrap ########
+
+#Bootstrap for i3-wm
+if [ -d "$HOME/bin" ] ; then
+    # Allows dmenu to access binaries within the following paths
+    PATH="$HOME/.bin:$HOME/.local/bin:$PATH";
+fi
