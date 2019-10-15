@@ -1,0 +1,2 @@
+#!/bin/bash
+xrandr --output HDMI1 --same-as eDP1 --auto --transform 0.749,0,-35,0,0.75,-20,0,0,1
