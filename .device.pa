@@ -1,0 +1,5 @@
+#!/usr/bin/pulseaudio -nF
+#
+# -- M3TIOR 2019 --
+# Device specific configuration (managed by yadm)
+#

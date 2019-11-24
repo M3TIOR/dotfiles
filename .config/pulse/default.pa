@@ -1,0 +1,35 @@
+#!/usr/bin/pulseaudio -nF
+#
+# -- M3TIOR 2019 --
+# In an attempt to make a JACK compatibility layer for my personal
+# laptop, I've adopted this configuration file for pulse to route
+# alsa output into my headphones. For the full story, visit my blog
+# page: https://cplusplusook.blogspot.com/
+#
+# For configuration options see (what I dub the best documentation):
+#     https://www.systutorials.com/docs/linux/man/5-default.pa/
+#     https://www.systutorials.com/docs/linux/man/5-pulse-cli-syntax/
+
+# Load system default configuration for best compatibility and
+# extend off of it.
+.ifexists /etc/pulse/default.pa
+	.include /etc/pulse/default.pa
+.endif
+
+# Load device specific configuration (for me, managed by yadm).
+# The device / user level files must be loaded auto-manually
+# from this default.pa because pulse audio only looks here and
+# doesn't look elsewhere automatically.
+.ifexists ~/.device.pa
+	.include ~/.device.pa
+.endif
+
+# Load user specific configuration; use this file as a middle-
+# man to redirect configuration attempts, instead of as the
+# main user configuration. This method is a lot more robust.
+.ifexists ~/.user.pa
+	.include ~/.user.pa
+.endif
+
+###
+# End M3TIOR's configuration method.
