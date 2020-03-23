@@ -1,0 +1,12 @@
+##
+## M3TIOR's Favorite Packages List
+##
+
+hypothesis
+kivy
+youtube-dl
+sh
+gcalcli
+
+# needs Kaldi install info
+dragonfly2
