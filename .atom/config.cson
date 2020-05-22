@@ -1,10 +1,21 @@
 "*":
+  "atom-beautify":
+    apex: {}
+    cpp:
+      default_beautifier: "clang-format"
+    executables:
+      "clang-format":
+        path: "/usr/bin/clang-format"
+    general:
+      _analyticsUserId: "ecf95b81-086f-4cc6-8b3b-182d053725a7"
+  "atom-drawio":
+    showExportButtons: true
+    theme: "dark"
   core:
     autoHideMenuBar: true
     disabledPackages: [
       "pigments"
       "jupyter-notebook"
-      "Hydrogen"
     ]
     projectHome: "/home/m3tior/Git"
     telemetryConsent: "limited"
@@ -13,17 +24,64 @@
       "purplest-inc-syntax"
     ]
   editor:
+    fontSize: 13
     invisibles: {}
     scrollPastEnd: true
     showInvisibles: true
     softWrap: true
-    tabLength: 4
     tabType: "hard"
   "exception-reporting":
     userId: "313602c1-c2eb-42e3-b111-d48020e39b47"
   "fast-eslint": {}
   "linter-ui-default":
     showPanel: true
+  "m3tior-source-formatter":
+    formatters: [
+      {
+        action:
+          argv: [
+            "clang-format"
+            "{inputFile}"
+          ]
+          env: []
+          fromSTDOUT: true
+          toSTDIN: false
+        name: "clang-format-m3tior"
+        scopes: [
+          ".hpp"
+          ".h"
+          ".cpp"
+          ".c"
+          ".objc"
+          ".java"
+        ]
+        type: "Native"
+      }
+    ]
+    languageConfigs: [
+      {
+        name: "C"
+        onLoad: "formatter-name"
+        onRun: "clang-format"
+        onSave: "formatter-name"
+        scopes: [
+          ".h"
+          ".c"
+        ]
+      }
+      {
+        name: "C++"
+        onLoad: "formatter-name"
+        onRun: "formatter-name"
+        onSave: "formatter-name"
+        scopes: [
+          ".cpp"
+          ".hpp"
+          ".h"
+          ".c"
+        ]
+      }
+    ]
   pigments:
     extendedSearchNames: [
       "*.css"
@@ -37,6 +95,7 @@
       "*.sass"
       "*.scss"
     ]
+  "settings-view": {}
   "tree-view-background":
     imagePaths: [
       "file:///home/m3tior/Pictures/post-26550-0-49230700-1425437874.png"
@@ -70,3 +129,5 @@
 ".text.xml.xsl":
   editor:
     tabLength: 2
+"atom-drawio":
+  theme: "dark"
