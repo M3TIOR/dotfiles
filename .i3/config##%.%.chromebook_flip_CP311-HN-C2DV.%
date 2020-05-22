@@ -85,13 +85,14 @@ bindsym $mod+1 workspace code
 bindsym $mod+2 workspace browser
 bindsym $mod+3 workspace graphic-design
 bindsym $mod+4 workspace backup
+bindsym $mod+5 workspace messaging
 
 ## move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace code
 bindsym $mod+Shift+2 move container to workspace browser
 bindsym $mod+Shift+3 move container to workspace graphic-design
 bindsym $mod+Shift+4 move container to workspace backup
-
+bindsym $mod+Shift+5 move container to workspace messaging
 #-----------------------------------------------------------------------------------------------------
 #                                          CONF KEYBINDINGS
 #-----------------------------------------==================------------------------------------------
@@ -244,6 +245,7 @@ for_window [class="^Rsvg-view-3$"] floating enable
 for_window [class="^Volumeicon$"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Nm-connection-editor"] floating enable
+for_window [class="^qjackctl$"] floating enable
 
 #--------------------------------------------------------------------------------------------
 #                                      Startup Applications
@@ -253,23 +255,24 @@ for_window [class="^Nm-connection-editor"] floating enable
 #exec --no-startup-id xmodmap ~/.Xmodmap &
 
 ## compton is started by a pm script because it should
-## not be running on a battery
-exec --no-startup-id sh -c "~/bin/isonbattery.sh || compton" &
-exec --no-startup-id sh -c "xfsettingsd --sm-client-disable || mate-settings-daemon" &
+## not be running on a battery (sh is used for conditional execution.)
+exec --no-startup-id sh -c "~/bin/isonbattery.sh || compton"
+exec --no-startup-id sh -c "xfsettingsd --sm-client-disable || mate-settings-daemon"
 
 
-exec --no-startup-id xfce4-volumed &
-exec --no-startup-id sh -c "xfce4-power-manager || mate-power-manager " &
-exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
-exec --no-startup-id ~/.bin/nticon.py &
+#exec --no-startup-id xfce4-volumed
+exec --no-startup-id sh -c "xfce4-power-manager || mate-power-manager "
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id ~/.bin/nticon.py
 exec --no-startup-id sh -c "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 || /usr/lib/x86_64-linux-gnu/polkit-mate/polkit-mate-authentication-agent-1" &
 
 # Set desktop background
-exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/bg &
+exec --no-startup-id ~/.fehbg
 
 # Enable laptop's tablet's writing pen.
-exec --no-startup-id xinput --enable 13
+#doesn't always work, sometimes the pen doesn't register (TODO: needs script)
+#exec --no-startup-id xinput --enable 13
 
 # Enable lockscreen on device close via acpi
-exec --no-startup-id ~/.bin/fliplock.py
+exec-once --no-startup-id ~/.bin/fliplock.py
