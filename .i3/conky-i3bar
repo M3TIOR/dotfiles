@@ -20,8 +20,7 @@ while read line; do
   # if button is needed - ${nb#*;}
   # left button -button:1, right - button:3
   case "${nb%%;*}" in
-    name:keyboard) xfce4-keyboard-settings || mate-keyboard-properties & ;;
-    name:disk) thunar --class="ThunarHome" || caja --class="ThunarHome" & ;;
+    name:disk) thunar --class="ThunarHome" & ;;
     name:cpu) x-terminal-emulator -T "TerminalHtop" -e htop & ;;
     name:battery)
       case "${nb#*;}" in
@@ -29,11 +28,8 @@ while read line; do
         button:3) xfce4-power-information || mate-power-statistics & ;;
       esac;;
     name:wlan) $HOME/bin/wifi_connect.sh &>/dev/null &  ;;
-    name:lan) ;;
     name:date) yad --calendar --title='Calendar selection' &>/dev/null & ;;
     name:time) ;;
-    name:mail) xdg-open "https://gmail.com" &>/dev/null & ;;
-    name:logout) $HOME/bin/logout.py &>/dev/null & ;;
     name:display) xfce4-display-settings || mate-display-properties  & ;;
     *) logger "conky-i3bar: ${nb%%;*}" ;;
   esac
