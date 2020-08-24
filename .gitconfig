@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Ruby Allison Rose
+	email = M3TIOR@users.noreply.github.com
+[credential]
+	username = M3TIOR
+	helper = store

@@ -1,0 +1,2 @@
+# Disallow accidentally adding secret keys to my dotfiles.
+.git-credentials
