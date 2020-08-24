@@ -3,6 +3,7 @@
 ##
 
 hypothesis
+dpcontracts
 kivy
 youtube-dl
 sh
