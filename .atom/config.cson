@@ -17,6 +17,8 @@
       "pigments"
       "jupyter-notebook"
     ]
+    editor:
+      multiCursorOnClick: true
     projectHome: "/home/m3tior/Git"
     telemetryConsent: "limited"
     themes: [
@@ -26,6 +28,7 @@
   editor:
     fontSize: 13
     invisibles: {}
+    multiCursorOnClick: true
     scrollPastEnd: true
     showInvisibles: true
     softWrap: true
