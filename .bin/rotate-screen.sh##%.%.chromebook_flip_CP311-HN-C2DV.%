@@ -30,25 +30,25 @@ xinput_orient_mouse_invert(){
 }
 
 case $* in
-	[Dd]*|normal)
+	[Uu]*|normal)
 		xrandr --output eDP-1 --rotate normal;
 		xinput_orient_mouse_normal $ID_MOUSE;
-		xinput_orient_mouse_normal $ID_WACOM_PEN;
+		# xinput_orient_mouse_normal $ID_WACOM_PEN;
 	;;
-	[Uu]*|inverted)
+	[Dd]*|inverted)
 		xrandr --output eDP-1 --rotate inverted;
 		xinput_orient_mouse_invert $ID_MOUSE;
-		xinput_orient_mouse_invert $ID_WACOM_PEN;
+		# xinput_orient_mouse_invert $ID_WACOM_PEN;
 	;;
-	[Rr]*|left)
+	[Ll]*)
 		xrandr --output eDP-1 --rotate left;
 		xinput_orient_mouse_left $ID_MOUSE;
-		xinput_orient_mouse_left $ID_WACOM_PEN;
+		# xinput_orient_mouse_left $ID_WACOM_PEN;
 	;;
-	[Ll]*|right)
+	[Rr]*)
 		xrandr --output eDP-1 --rotate right;
 		xinput_orient_mouse_right $ID_MOUSE;
-		xinput_orient_mouse_right $ID_WACOM_PEN;
+		# xinput_orient_mouse_right $ID_WACOM_PEN;
 	;;
 	*)
 		echo "That's an Error Doc.";
