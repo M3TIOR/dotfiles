@@ -1,0 +1,16 @@
+# 1_hotplug-mmc:
+# Intended to ensure the required mmc is mounted on boot. Number preceding
+# name to ensure the shell alphanumeric blob file sort puts this first before
+# any other files with order dependent execution.
+
+if test -b "/dev/disk/by-label/flashbag"; then
+	udisksctl mount -b "/dev/disk/by-label/flashbag";
+
+	if ! test -L $HOME/Git; then
+		ln -sr "/media/$USER/flashbag/Projects" "$HOME/Git";
+	fi;
+else
+	if test -L "$HOME/Git"; then
+		rm "$HOME/Git";
+	fi;
+fi;
