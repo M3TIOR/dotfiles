@@ -27,25 +27,23 @@ if test -d "$HOME/.local/bin"; then
 fi;
 
 if test -d "$HOME/.profile.d"; then
-	LINK_NAME='';
 	FILE_NAME='';
 	for file in $HOME/.profile.d/*; do
-		# Just run all for now, this can be modified for machine specific config
-		# later hopefully by using Yadm's builtin configuration method.
+		# Runs all files in .profile.d except those which end in a yadm template
+		# config suffix.
 		FILE_NAME="${file##*\/}";
 		if test -L "$file"; then
-			LINK_NAME="$FILE_NAME";
+			# Don't worry about checking anything if we're a symbolic link
 			. "$file";
 		else
-			# If the file name is the same as our last link minus the yadm
-			# template config suffix, then we don't execute it.
-			# This should work assuming strings are read in alpha-numeric order.
-			if test "$LINK_NAME" != "${FILE_NAME%%\#\#*}"; then
+			# If the file is regular and the name is the same after attempting
+			# to remove the yadm template config suffix, then we don't execute it.
+			# The substring removal only works if it's a complete match.
+			if test "$FILE_NAME" = "${FILE_NAME%%\#\#*}"; then
 				. "$file";
 			fi;
 		fi;
 	done;
-	unset LINK_NAME;
 	unset FILE_NAME;
 fi;
 
