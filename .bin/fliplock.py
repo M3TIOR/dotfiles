@@ -20,15 +20,23 @@
 # SOFTWARE.
 
 from sh import acpi_listen, slock
+from time import sleep
 
 slock_lock = False
+
+def unlock_slock():
+	global slock_lock
+	slock_lock = False
 
 def run_slock_on_close(data_line):
 	global slock_lock
 	print(data_line)
 	if "close" in data_line and not slock_lock:
 		slock_lock=True
-		slock()
-		slock_lock=False
+		slock(_bg=True, _done=unlock_slock)
 
-acpi_listen(_out=run_slock_on_close)
+# Make sure if ACIP isn't immediately available we keep trying on an interval.
+while True:
+	sleep(10)
+	acpi = acpi_listen(_bg=True, _out=run_slock_on_close)
+	acpi.wait()

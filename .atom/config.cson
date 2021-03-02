@@ -13,6 +13,11 @@
     theme: "dark"
   core:
     autoHideMenuBar: true
+    customFileTypes:
+      "source.js": [
+        "cjs"
+        "mjs"
+      ]
     disabledPackages: [
       "pigments"
       "jupyter-notebook"
@@ -26,7 +31,7 @@
       "purplest-inc-syntax"
     ]
   editor:
-    fontSize: 13
+    fontSize: 15
     invisibles: {}
     multiCursorOnClick: true
     scrollPastEnd: true

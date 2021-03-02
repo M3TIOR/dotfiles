@@ -47,8 +47,8 @@ if test -n `echo $DEFAULT_IPROUTE | grep "ppp"`; then
 	trap 'cleanup' 1 2 3 6 9;
 	# (manual fix for when pppd doesn't fix the default IP route table).
 	echo "Adjusting IP routing tables appropriately...";
-	ip rou delete default;
-	ip rou add default via 192.168.234.1 dev ppp0;
+	sudo ip rou delete default;
+	sudo ip rou add default via 192.168.234.1 dev ppp0;
 	echo "DONE";
 fi;
 

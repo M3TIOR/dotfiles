@@ -1,1 +1,18 @@
-atom-text-editor::shadow .invisible-character { color: #350045 }
+atom-text-editor::shadow .invisible-character { color: #550045 }
+
+@import "ui-variables";
+
+// Temporary local fix for new atom 2 release issue.
+.atom-dock-toggle-button-inner .icon { color: @lighter-base; }
+.atom-dock-mask { background-color: unset; }
+.atom-dock-toggle-button .atom-dock-toggle-button-inner {
+	background-color: @dark-base;
+	border: 1px solid @light-base;
+}
+.panels-menu li .icon {
+	color: @text-color
+}
+.settings-view {
+	background-color: unset !important;
+	color: unset !important;
+}

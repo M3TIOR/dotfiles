@@ -223,6 +223,7 @@ client.urgent              #FF0000   #FF0000    #FF0000
 #---------------------------------------------------------------------------------------------
 #                                      Windows settings
 #-------------------------------------==================--------------------------------------
+## To find out window craterion (class, title, ...) use xprop 
 new_window pixel 2
 for_window [class="^Psi-plus$"] floating enable, move container to workspace 2
 for_window [title="^TerminalHtop$"] floating enable
@@ -235,7 +236,6 @@ no_focus   [class="^Xfce4-notifyd$" ]
 for_window [class="^cameraclient$"] floating enable
 for_window [class="^Blueman-manager$"] floating enable
 #for_window [class="^galculator$"] floating enable
-for_window [class="^vlc$"] floating enable
 for_window [class="^ffplay$"] floating enable
 for_window [class="^mpv$"] floating enable
 for_window [class="^Yad$"] floating enable border normal
@@ -246,6 +246,7 @@ for_window [class="^Volumeicon$"] floating enable
 for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Nm-connection-editor"] floating enable
 for_window [class="^qjackctl$"] floating enable
+#for_window [class="(?i)hiro" title="(?i)^higan.*"] floating enable
 
 #--------------------------------------------------------------------------------------------
 #                                      Startup Applications
