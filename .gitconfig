@@ -5,3 +5,5 @@
 [credential]
 	username = M3TIOR
 	helper = store
+[atomGithub]
+	test = 1612939722540-1

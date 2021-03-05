@@ -1,0 +1,6 @@
+[submodule ".config/yadm/roses-cuddles"]
+	path = .config/yadm/roses-cuddles
+	url = https://github.com/M3TIOR/roses-cuddly-packages
+[submodule ".local/share/yadm/yadm_submodule"]
+	path = .local/share/yadm/yadm_submodule
+	url = https://github.com/TheLocehiliosan/yadm

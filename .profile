@@ -18,10 +18,10 @@ fi;
 
 # set PATH so it includes user's private bin if it exists
 if test -d "$HOME/bin"; then
-	export PATH="$HOME/bin:$PATH";
+	export PATH="$HOME/.bin:$PATH";
 fi;
 
-# set PATH so it includes user's private bin if it exists
+# set PATH so it includes user's XDG private bin if it exists
 if test -d "$HOME/.local/bin"; then
 	export PATH="$HOME/.local/bin:$PATH";
 fi;
